@@ -6,9 +6,10 @@ import RandomAstroid from "./RandomAstroid";
 import { useHistory } from "react-router-dom";
 import "./Home.css";
 
-export default function Home() {
+export default function Home(props) {
   const [data, setData] = useState([]);
-  let history = useHistory();
+  let History = useHistory();
+  console.log(History);
   console.log("button  render");
 
   const [val, setVal] = useState("");
@@ -21,12 +22,14 @@ export default function Home() {
       .then((res) => {
         console.log(res.data);
         setData(res.data);
-        console.log("dta", data);
+        console.log("data", data);
       })
       .catch((e) => {
         console.log(e);
       });
   };
+
+  console.log(History);
 
   const random = () => {
     axios
@@ -36,12 +39,12 @@ export default function Home() {
       .then((res) => {
         console.log(res.data);
         setData(res.data);
-        console.log("dta", data);
+        console.log("data", data);
       })
       .catch((e) => {
         console.log(e);
       });
-    this.history.push("/RandomAstroid");
+    History.push("/RandomAstroid");
   };
 
   const changes = (e) => {
@@ -49,7 +52,7 @@ export default function Home() {
   };
 
   return (
-    <div className="Button">
+    <div className="Button container">
       <TextField
         id="standard-basic"
         onChange={changes}
